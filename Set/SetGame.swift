@@ -36,7 +36,7 @@ struct SetGame<CardContent: Equatable> where CardContent: Hashable {
         }
     }
     
-    // TODO: Implement fully
+    // TODO: Finish implementing
     mutating func choose(_ card: Card, isSetFunction: ([Card]) -> Bool) {
         let selectedIndex = cards.firstIndex(where: { $0.id == card.id })
         if let selectedIndex, !cards[selectedIndex].isMatched {
