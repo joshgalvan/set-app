@@ -46,8 +46,8 @@ struct SetGameView: View {
                 .buttonBorderShape(.capsule)
             } right: {
             }
-            .padding([.leading, .bottom, .trailing])
-            .padding(.top, 10)
+            .padding([.leading, .trailing])
+            .padding(.top, 9)
         }
     }
 }
