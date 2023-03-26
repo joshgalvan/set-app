@@ -19,7 +19,6 @@
 		ECA403DD29CBE0C00010CA15 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA403DC29CBE0C00010CA15 /* TestView.swift */; };
 		ECA403DF29CBF0980010CA15 /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA403DE29CBF0980010CA15 /* Diamond.swift */; };
 		ECA403E129CBF0A30010CA15 /* Triangle.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA403E029CBF0A30010CA15 /* Triangle.swift */; };
-		ECA403E329CBF0AB0010CA15 /* Oval.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA403E229CBF0AB0010CA15 /* Oval.swift */; };
 		ECA403E529CD06C10010CA15 /* FilledAndStrokedShapeWithOpacity.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA403E429CD06C00010CA15 /* FilledAndStrokedShapeWithOpacity.swift */; };
 		ECA403EB29CE1A0A0010CA15 /* AdaptableToScrollVGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA403EA29CE1A0A0010CA15 /* AdaptableToScrollVGrid.swift */; };
 /* End PBXBuildFile section */
@@ -38,7 +37,6 @@
 		ECA403DC29CBE0C00010CA15 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		ECA403DE29CBF0980010CA15 /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
 		ECA403E029CBF0A30010CA15 /* Triangle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Triangle.swift; sourceTree = "<group>"; };
-		ECA403E229CBF0AB0010CA15 /* Oval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oval.swift; sourceTree = "<group>"; };
 		ECA403E429CD06C00010CA15 /* FilledAndStrokedShapeWithOpacity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilledAndStrokedShapeWithOpacity.swift; sourceTree = "<group>"; };
 		ECA403EA29CE1A0A0010CA15 /* AdaptableToScrollVGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdaptableToScrollVGrid.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,7 +82,6 @@
 				ECA403D829CBBBF30010CA15 /* SetCardSymbol.swift */,
 				ECA403DE29CBF0980010CA15 /* Diamond.swift */,
 				ECA403E029CBF0A30010CA15 /* Triangle.swift */,
-				ECA403E229CBF0AB0010CA15 /* Oval.swift */,
 				ECA403D029C9124A0010CA15 /* SetGame.swift */,
 				EC99B6A429C90F1500F3D923 /* Assets.xcassets */,
 				EC99B6A629C90F1500F3D923 /* Preview Content */,
@@ -172,7 +169,6 @@
 			files = (
 				EC99B6A329C90F1300F3D923 /* SetGameView.swift in Sources */,
 				EC99B6A129C90F1300F3D923 /* SetApp.swift in Sources */,
-				ECA403E329CBF0AB0010CA15 /* Oval.swift in Sources */,
 				ECA403D929CBBBF30010CA15 /* SetCardSymbol.swift in Sources */,
 				ECA403D329C912520010CA15 /* CustomSetGame.swift in Sources */,
 				ECA403EB29CE1A0A0010CA15 /* AdaptableToScrollVGrid.swift in Sources */,
