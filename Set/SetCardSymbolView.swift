@@ -105,9 +105,9 @@ fileprivate struct Constant {
 extension SetColor {
     func toSwiftUIColor() -> Color {
         switch self {
-        case .red: return Color.red
-        case .green: return Color.green
-        case .purple: return Color.blue
+        case .red: return Color(hue: 310/360, saturation: 0.95, brightness: 0.90)
+        case .green: return Color.mint
+        case .blue: return Color.indigo
         }
     }
 }

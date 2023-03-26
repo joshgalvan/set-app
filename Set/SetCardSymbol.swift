@@ -48,7 +48,7 @@ struct SetCardSymbol: Equatable, Hashable, CustomStringConvertible {
         switch color {
         case .red: description += "red)"
         case .green: description += "green)"
-        case .purple: description += "purple)"
+        case .blue: description += "blue)"
         }
         return description
     }
@@ -67,7 +67,7 @@ enum SetShading: CaseIterable {
 }
 
 enum SetColor: CaseIterable {
-    case red, green, purple
+    case red, green, blue
 }
 
 extension CaseIterable {
