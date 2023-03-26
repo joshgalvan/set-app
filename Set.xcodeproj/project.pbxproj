@@ -25,7 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		EC8F443C29CF7D86004AA182 /* SetCardSymbolView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetCardSymbolView.swift; path = Set/SetCardSymbolView.swift; sourceTree = "<group>"; };
+		EC8F443C29CF7D86004AA182 /* SetCardSymbolView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetCardSymbolView.swift; sourceTree = "<group>"; };
 		EC99B69D29C90F1300F3D923 /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EC99B6A029C90F1300F3D923 /* SetApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetApp.swift; sourceTree = "<group>"; };
 		EC99B6A229C90F1300F3D923 /* SetGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameView.swift; sourceTree = "<group>"; };
@@ -57,7 +57,6 @@
 		EC99B69429C90F1300F3D923 = {
 			isa = PBXGroup;
 			children = (
-				EC8F443C29CF7D86004AA182 /* SetCardSymbolView.swift */,
 				EC99B69F29C90F1300F3D923 /* Set */,
 				EC99B69E29C90F1300F3D923 /* Products */,
 			);
@@ -74,6 +73,7 @@
 		EC99B69F29C90F1300F3D923 /* Set */ = {
 			isa = PBXGroup;
 			children = (
+				EC8F443C29CF7D86004AA182 /* SetCardSymbolView.swift */,
 				EC99B6A029C90F1300F3D923 /* SetApp.swift */,
 				ECA403EA29CE1A0A0010CA15 /* AdaptableToScrollVGrid.swift */,
 				EC99B6A229C90F1300F3D923 /* SetGameView.swift */,

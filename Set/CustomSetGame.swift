@@ -40,6 +40,10 @@ class CustomSetGame: ObservableObject {
     var canAddCards: Bool {
         setGame.canAddCards
     }
+    
+    var numberOfMatches: Int {
+        setGame.numberOfMatches
+    }
         
     private func selectedCardsAreASet(cardsToCheck: [SetGame<SetCardSymbol>.Card]) -> Bool {
         guard cardsToCheck.count == 3 else {
@@ -83,7 +87,3 @@ class CustomSetGame: ObservableObject {
 fileprivate struct Constants {
     static let maxNumberOfCards: Int = 81
 }
-
-// TODO: Remove cards when matched, take care of private _card var.
-// TODO: Allow deselecting of cards when 3 are not selected
-// TODO: Implement counter for how many matches you have

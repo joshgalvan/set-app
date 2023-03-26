@@ -11,12 +11,17 @@ import Foundation
 struct SetGame<CardContent: Equatable> where CardContent: Hashable {
     
     private var _cards: [Card]
+    // _indexOfNextCardToShow is needed because elements are removed from 'cards' and we
+    // still need to track what cards to add to 'cards' from '_cards' so we can exhaust
+    // them.
+    private var _indexOfNextCardToShow: Int
     private(set) var cards: [Card]
     private(set) var selectedCards: [Card]
+    private(set) var numberOfMatches: Int = 0
     private var thereWasAMatch: Bool = false
     
     var canAddCards: Bool {
-        if cards.count == 81 {
+        if _indexOfNextCardToShow == 81 {
             return false
         } else {
             return true
@@ -34,69 +39,73 @@ struct SetGame<CardContent: Equatable> where CardContent: Hashable {
         for i in 0..<12 {
             cards.append(_cards[i])
         }
+        _indexOfNextCardToShow = 12
     }
     
-    // TODO: Finish implementing
     mutating func choose(_ card: Card, isSetFunction: ([Card]) -> Bool) {
         let selectedIndex = cards.firstIndex(where: { $0.id == card.id })
         if let selectedIndex, !cards[selectedIndex].isMatched {
-            var cardOneIndex: Int? = 0
-            var cardTwoIndex: Int? = 0
-            var cardThreeIndex: Int? = 0
-            if selectedCards.count < 3, !cards[selectedIndex].isSelected {
-                cards[selectedIndex].isSelected = true
-                selectedCards.append(cards[selectedIndex])
-                if isSetFunction(selectedCards) {
-                    cardOneIndex = cards.firstIndex(where: { $0.id == selectedCards[0].id })
-                    cardTwoIndex = cards.firstIndex(where: { $0.id == selectedCards[1].id })
-                    cardThreeIndex = cards.firstIndex(where: { $0.id == selectedCards[2].id })
-                    cards[cardOneIndex!].isMatched = true
-                    cards[cardTwoIndex!].isMatched = true
-                    cards[cardThreeIndex!].isMatched = true
-                    thereWasAMatch = true
+            // This is the amount of selectedCards right before the tap gesture.
+            if selectedCards.count < 3 {
+                if cards[selectedIndex].isSelected {
+                    cards[selectedIndex].isSelected = false
+                    selectedCards.removeAll(where: { $0.id == cards[selectedIndex].id })
+                } else {
+                    cards[selectedIndex].isSelected = true
+                    selectedCards.append(cards[selectedIndex])
+                    
+                    let isASet = isSetFunction(selectedCards)
+                    if isASet {
+                        let indexes = getSelectedCardsIndexes()
+                        for index in indexes {
+                            cards[index!].isMatched = true
+                        }
+                        thereWasAMatch = true
+                        numberOfMatches += 1
+                    } else if !isASet, selectedCards.count == 3 {
+                        // selectedCards.count would be 3 here because we just appended a card, if able to.
+                        let indexes = getSelectedCardsIndexes()
+                        for index in indexes {
+                            cards[index!].matchFailed = true
+                        }
+                    }
                 }
             } else if selectedCards.count == 3 {
-                if thereWasAMatch {
-                    print("There was a match")
-                    thereWasAMatch = false
-                }
                 for i in 0..<cards.count {
                     cards[i].isSelected = false
+                    cards[i].matchFailed = false
                 }
                 cards[selectedIndex].isSelected = true
                 selectedCards = [cards[selectedIndex]]
+                if thereWasAMatch {
+                    cards.removeAll(where: { $0.isMatched == true })
+                    thereWasAMatch = false
+                }
             }
+        }
+        
+        func getSelectedCardsIndexes() -> [Int?] {
+            var indexes: [Int?] = []
+            for i in 0..<selectedCards.count {
+                indexes.append(cards.firstIndex(where: { $0.id == selectedCards[i].id }))
+            }
+            return indexes
+            
         }
     }
 
     mutating func addCards() {
-        print("_cards")
-        let _cardsSet = Set(_cards)
-        print(_cardsSet.count)
-        print(_cards.count)
-        for c in _cards {
-            print(c.content)
-        }
-        print("cards")
-        for c in cards {
-            print(c.content)
-        }
         for _ in 0...2 {
-            cards.append(_cards[cards.count])
+            cards.append(_cards[_indexOfNextCardToShow])
+            _indexOfNextCardToShow += 1
         }
     }
     
     struct Card: Identifiable, Hashable {
         var isMatched: Bool = false
+        var matchFailed: Bool = false
         var isSelected: Bool = false
         let id = UUID()
         var content: CardContent
     }
 }
-
-// (three, diamond, translucent, red) is showing up as two diamonds
-// (three, diamond, clear, red) is showing up as two diamonds
-// (three, diamond, solid, green) is showing up as two diamonds
-// (three, diamond, translucent, purple) is showing up as two diamond
-// (three, diamond, solid, red) is showing up as two diamond
-// Obs: There are no 3 diamond cards on the board. Issue with displaying 3 diamonds.

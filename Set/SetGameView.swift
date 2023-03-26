@@ -45,9 +45,16 @@ struct SetGameView: View {
                 .buttonStyle(.bordered)
                 .buttonBorderShape(.capsule)
             } right: {
+                // I know this is not an ideal place to put this info (in the navigation
+                // bar), but the sizing of the VGrid is great, and adding a header at the
+                // top would mess it up. Plus, this is a simple app for the purpose of
+                // practicing.
+                Text("\(game.numberOfMatches)")
+                    .foregroundColor(.yellow)
+                    .font(.largeTitle)
             }
             .padding([.leading, .trailing])
-            .padding(.top, 9)
+            .padding(.top, 8)
         }
     }
 }
@@ -60,9 +67,12 @@ struct CardView: View {
             ZStack {
                 let cardShape = RoundedRectangle(cornerRadius: Constant.cornerRadius)
                 cardShape.fill().foregroundColor(Color("cardFillColor"))
-                if card.isMatched{
+                if card.matchFailed {
                     cardShape.strokeBorder(lineWidth: Constant.cardLineWidth)
                         .foregroundColor(.red)
+                } else if card.isMatched {
+                    cardShape.strokeBorder(lineWidth: Constant.cardLineWidth)
+                        .foregroundColor(.green)
                 } else if card.isSelected {
                     cardShape.strokeBorder(lineWidth: Constant.cardLineWidth)
                         .foregroundColor(.blue)

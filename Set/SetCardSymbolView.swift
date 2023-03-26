@@ -107,7 +107,7 @@ extension SetColor {
         switch self {
         case .red: return Color.red
         case .green: return Color.green
-        case .purple: return Color.purple
+        case .purple: return Color.blue
         }
     }
 }
