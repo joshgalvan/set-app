@@ -78,11 +78,15 @@ struct SetGame<CardContent: Equatable> where CardContent: Hashable {
                 cards[selectedIndex].isSelected = true
                 selectedCards = [cards[selectedIndex]]
                 if thereWasAMatch {
-                    for i in 0..<cards.count {
-                        if cards[i].isMatched {
-                            cards[i] = _cards[_indexOfNextCardToShow]
-                            _indexOfNextCardToShow += 1
+                    if canAddCards {
+                        for i in 0..<cards.count {
+                            if cards[i].isMatched {
+                                cards[i] = _cards[_indexOfNextCardToShow]
+                                _indexOfNextCardToShow += 1
+                            }
                         }
+                    } else {
+                        cards.removeAll(where: { $0.isMatched == true })
                     }
                     thereWasAMatch = false
                 }
