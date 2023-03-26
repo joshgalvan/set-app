@@ -116,7 +116,7 @@ extension SetShading {
     func toDouble() -> Double {
         switch self {
         case .solid: return 1.0
-        case .translucent: return 0.3
+        case .translucent: return 0.4
         case .clear: return 0.0
         }
     }
