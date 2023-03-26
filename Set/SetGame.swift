@@ -11,9 +11,9 @@ import Foundation
 struct SetGame<CardContent: Equatable> where CardContent: Hashable {
     
     private var _cards: [Card]
-    // _indexOfNextCardToShow is needed because elements are removed from 'cards' and we
-    // still need to track what cards to add to 'cards' from '_cards' so we can exhaust
-    // them.
+    // _indexOfNextCardToShow is needed because elements are removed and reordered from
+    // 'cards' and we still need to track what cards to add to 'cards' from '_cards' so
+    // we can exhaust them.
     private var _indexOfNextCardToShow: Int
     private(set) var cards: [Card]
     private(set) var selectedCards: [Card]
@@ -78,7 +78,12 @@ struct SetGame<CardContent: Equatable> where CardContent: Hashable {
                 cards[selectedIndex].isSelected = true
                 selectedCards = [cards[selectedIndex]]
                 if thereWasAMatch {
-                    cards.removeAll(where: { $0.isMatched == true })
+                    for i in 0..<cards.count {
+                        if cards[i].isMatched {
+                            cards[i] = _cards[_indexOfNextCardToShow]
+                            _indexOfNextCardToShow += 1
+                        }
+                    }
                     thereWasAMatch = false
                 }
             }
