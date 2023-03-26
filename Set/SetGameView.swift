@@ -51,7 +51,7 @@ struct SetGameView: View {
                 // practicing.
                 Text("\(game.numberOfMatches)")
                     .foregroundColor(.yellow)
-                    .font(.largeTitle)
+                    .font(.title)
             }
             .padding([.leading, .trailing])
             .padding(.top, 8)
