@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Creates a navigation bar of left justified, centered, and right justified views.
 struct CustomNavBar<Left, Center, Right>: View where Left: View, Center: View, Right: View {
     let left: () -> Left
     let center: () -> Center

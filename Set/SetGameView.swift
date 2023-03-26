@@ -13,7 +13,7 @@ struct SetGameView: View {
     
     var body: some View {
         VStack {
-            AdaptableToScrollVGrid(items: game.cards, aspectRatio: Constant.aspectRatio) { card in
+            AdaptableToScrollVGrid(items: game.cards, aspectRatio: Constant.aspectRatio, minWidth: Constant.minimumCardWidth) { card in
                 CardView(card: card)
                     .padding(4)
                     .onTapGesture {
@@ -91,9 +91,7 @@ fileprivate struct Constant {
     static let aspectRatio: CGFloat = 2/3
     static let cornerRadius: CGFloat = 20
     static let cardLineWidth: CGFloat = 3.0
-    static let fontScale: CGFloat = 0.7
-    static let opacity: CGFloat = 0.5
-    static let maxNumberOfCardsWithNoScrollView: Int = 42
+    static let minimumCardWidth: CGFloat = 63.0
 }
 
 struct ContentView_Previews: PreviewProvider {

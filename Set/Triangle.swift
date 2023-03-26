@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Defines a triangle shape for use in displaying a SetCardSymbol.
 struct Triangle: Shape {
     func path(in rect: CGRect) -> Path {
         let sideLength = min(rect.width, rect.height)

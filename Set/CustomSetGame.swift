@@ -16,14 +16,16 @@ class CustomSetGame: ObservableObject {
         setGame = SetGame<SetCardSymbol>(cardContents: contents)
     }
     
+    // This init is used so I could purposely inject certain SetCardSymbols for testing
+    // In the real game it is not used.
     init(_ contents: [SetCardSymbol]) {
         setGame = SetGame<SetCardSymbol>(cardContents: contents)
     }
     
-    /// Returns a randomized array of 81 "SetCardSymbol" types. You could also implement
-    /// this by algorithmically producing an array of all possible (81) cards and then
-    /// shuffling it, which may be more performant, but this method gave me
-    /// good practice with some common protocols.
+    // Returns a randomized array of 81 "SetCardSymbol" types. You could also implement
+    // this by algorithmically producing an array of all possible (81) cards and then
+    // shuffling it, which may be more performant, but this method gave me
+    // good practice with some common protocols.
     private static func makeSetGameCards() -> [SetCardSymbol] {
         var contents: Set<SetCardSymbol> = Set()
         while contents.count < Constants.maxNumberOfCards {
@@ -44,7 +46,7 @@ class CustomSetGame: ObservableObject {
     var numberOfMatches: Int {
         setGame.numberOfMatches
     }
-        
+      
     private func selectedCardsAreASet(cardsToCheck: [SetGame<SetCardSymbol>.Card]) -> Bool {
         guard cardsToCheck.count == 3 else {
             return false

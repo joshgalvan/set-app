@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Defines a diamond shape for use in displaying a SetCardSymbol.
 struct Diamond: Shape {
     func path(in rect: CGRect) -> Path {
         let center = CGPoint(x: rect.midX, y: rect.midY)

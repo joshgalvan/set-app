@@ -63,7 +63,8 @@ struct SetGame<CardContent: Equatable> where CardContent: Hashable {
                         thereWasAMatch = true
                         numberOfMatches += 1
                     } else if !isASet, selectedCards.count == 3 {
-                        // selectedCards.count would be 3 here because we just appended a card, if able to.
+                        // selectedCards.count would be 3 here because we just appended a
+                        // card, if able to.
                         let indexes = getSelectedCardsIndexes()
                         for index in indexes {
                             cards[index!].matchFailed = true

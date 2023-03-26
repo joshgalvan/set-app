@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// This displays a SetCardSymbol depending on all of its properties.
 struct SetCardSymbolView: View {
     let content: SetCardSymbol
     

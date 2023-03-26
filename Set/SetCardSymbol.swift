@@ -7,12 +7,15 @@
 
 import Foundation
 
+// This defines all the properties that need to be known to correctly identify a Set card.
 struct SetCardSymbol: Equatable, Hashable, CustomStringConvertible {
     let numberOfShapes: NumberOfSetShapes
     let shape: SetShape
     let shading: SetShading
     let color: SetColor
     
+    // I know this gets synthesized automatically, but I wanted to implement it myself
+    // for practice.
     static func ==(left: Self, right: Self) -> Bool {
         if left.numberOfShapes == right.numberOfShapes &&
             left.shape == right.shape &&

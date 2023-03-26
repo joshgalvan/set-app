@@ -7,21 +7,26 @@
 
 import SwiftUI
 
+// This 'view' allows you to opt a LazyVGrid into being put into a ScrollView once the
+// elements have reached a certain minimum width.
 struct AdaptableToScrollVGrid<Item, ItemView>: View where ItemView: View, Item: Identifiable {
     var items: [Item]
     var aspectRatio: CGFloat
+    var minWidth: CGFloat
     var content: (Item) -> ItemView
     
-    init(items: [Item], aspectRatio: CGFloat, @ViewBuilder content: @escaping (Item) -> ItemView) {
+    init(items: [Item], aspectRatio: CGFloat, minWidth: CGFloat, @ViewBuilder content: @escaping (Item) -> ItemView) {
         self.items = items
         self.aspectRatio = aspectRatio
+        self.minWidth = minWidth
         self.content = content
     }
     
     var body: some View {
         GeometryReader { geometry in
-            let width: CGFloat = max(widthThatFits(itemCount: items.count, in: geometry.size, itemAspectRatio: aspectRatio), CGFloat(63.0))
-            if width == 63.0 {
+            let width: CGFloat = max(widthThatFits(itemCount: items.count, in: geometry.size, itemAspectRatio: aspectRatio),
+                                     CGFloat(minWidth))
+            if width == minWidth {
                 ScrollView(showsIndicators: false) {
                     VStack {
                         LazyVGrid(columns: [GridItem(.adaptive(minimum: width), spacing: 0)], spacing: 0) {
