@@ -23,6 +23,7 @@ struct SetGameView: View {
             .cornerRadius(Constant.cornerRadius)
             .padding(.horizontal, 4)
             
+            // Not really a navigation bar, more like a footer with some buttons as used here.
             CustomNavBar {
                 Button {
                     game.restart()
@@ -45,10 +46,9 @@ struct SetGameView: View {
                 .buttonStyle(.bordered)
                 .buttonBorderShape(.capsule)
             } right: {
-                // I know this is not an ideal place to put this info (in the navigation
-                // bar), but the sizing of the VGrid is great, and adding a header at the
-                // top would mess it up. Plus, this is a simple app for the purpose of
-                // practicing.
+                // I know this is not an ideal place to put this info, but the sizing of
+                // the VGrid is great, and adding a header at the top would mess it up.
+                // Plus, this is a simple app for the purpose of practicing.
                 Text("\(game.numberOfMatches)")
                     .foregroundColor(.yellow)
                     .font(.title)
