@@ -1,4 +1,4 @@
-# set-ios-app
+# set-app
 
 This is my first iOS app and it recreates the game of Set, with rules described [here](https://smart-games.org/en/main/rules/), and play mimicking [here](https://smart-games.org/en/set/submit_set).
 
